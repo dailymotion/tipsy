@@ -60,9 +60,9 @@
 
                 if (gravity.length == 2) {
                     if (gravity.charAt(1) == 'w') {
-                        tp.left = pos.left + pos.width / 2 - 15;
+                        tp.left = pos.left - 4;
                     } else {
-                        tp.left = pos.left + pos.width / 2 - actualWidth + 15;
+                        tp.left = pos.left + pos.width - actualWidth;
                     }
                 }
 
@@ -100,6 +100,7 @@
             this.fixTitle();
             var title, o = this.options;
             if (typeof o.title == 'string') {
+                dbg('here', $e, $e.attr(o.title == 'title' ? 'original-title' : o.title));
                 title = $e.attr(o.title == 'title' ? 'original-title' : o.title);
             } else if (typeof o.title == 'function') {
                 title = o.title.call($e[0]);
@@ -210,7 +211,7 @@
         html: false,
         live: false,
         offset: 0,
-        opacity: 0.8,
+        opacity: 1,
         title: 'title',
         trigger: 'hover',
         interactive: false
@@ -273,11 +274,21 @@
     };
 
     /**
-     * DM specific code. Parse DOM and create Tipsy from elements html attributes
-     */
-    $j('.js-tipsy').each(function()
-        {
-            $j(this).tipsy($j(this).data('tipsy-options'));
-        });
-
+    * DM specific code. Parse DOM and create Tipsy from elements html attributes
+    */
+    $(function(){
+        $j('.js-tipsy').each(function()
+            {
+                var options = $j(this).data('tipsy-options');
+                if (options.target)
+                {
+                    options.html = true;
+                    options.interactive = true;
+                    options.delayOut = 100;
+                    $j(this).attr('title', $j(options.target).hide().html());
+                }
+                $j(this).tipsy(options);
+            });
+    });
 })(jQuery);
+
