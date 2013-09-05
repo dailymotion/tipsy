@@ -100,7 +100,6 @@
             this.fixTitle();
             var title, o = this.options;
             if (typeof o.title == 'string') {
-                dbg('here', $e, $e.attr(o.title == 'title' ? 'original-title' : o.title));
                 title = $e.attr(o.title == 'title' ? 'original-title' : o.title);
             } else if (typeof o.title == 'function') {
                 title = o.title.call($e[0]);
