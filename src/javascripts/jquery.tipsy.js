@@ -275,10 +275,11 @@
     /**
     * DM specific code. Parse DOM and create Tipsy from elements html attributes
     */
+    
     $(function(){
         $j('.js-tipsy').each(function()
             {
-                var options = $j(this).data('tipsy-options');
+                var options = $j(this).data('tipsy-options') || {};
                 if (options.target)
                 {
                     options.html = true;
