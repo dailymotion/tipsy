@@ -97,14 +97,26 @@
 
         getTitle: function() {
             var title, $e = this.$element, o = this.options;
-            this.fixTitle();
-            var title, o = this.options;
-            if (typeof o.title == 'string') {
-                title = $e.attr(o.title == 'title' ? 'original-title' : o.title);
-            } else if (typeof o.title == 'function') {
-                title = o.title.call($e[0]);
+
+            if (typeof o.target == 'string')
+            {
+                o.html = true;
+                o.interactive = true;
+                o.delayOut = 100;
+                title = $(o.target).html();
+            }
+            else
+            {
+                this.fixTitle();
+                var title, o = this.options;
+                if (typeof o.title == 'string') {
+                    title = $e.attr(o.title == 'title' ? 'original-title' : o.title);
+                } else if (typeof o.title == 'function') {
+                    title = o.title.call($e[0]);
+                }
             }
             title = ('' + title).replace(/(^\s*|\s*$)/, "");
+
             return title || o.fallback;
         },
 
@@ -212,6 +224,7 @@
         offset: 0,
         opacity: 1,
         title: 'title',
+        target: null,
         trigger: 'hover',
         interactive: false
     };
@@ -275,18 +288,11 @@
     /**
     * DM specific code. Parse DOM and create Tipsy from elements html attributes
     */
-    
+
     $(function(){
         $j('.js-tipsy').each(function()
             {
                 var options = $j(this).data('tipsy-options') || {};
-                if (options.target)
-                {
-                    options.html = true;
-                    options.interactive = true;
-                    options.delayOut = 100;
-                    $j(this).attr('title', $j(options.target).hide().html());
-                }
                 $j(this).tipsy(options);
             });
     });
