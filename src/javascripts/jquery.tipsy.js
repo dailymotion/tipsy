@@ -97,26 +97,25 @@
 
         getTitle: function() {
             var title, $e = this.$element, o = this.options;
+            this.fixTitle();
+            var title, o = this.options;
 
-            if (typeof o.target == 'string')
+            if (o.target)
             {
                 o.html = true;
                 o.interactive = true;
                 o.delayOut = 100;
-                title = $(o.target).html();
+                title = $j(o.target).hide().html();
             }
             else
             {
-                this.fixTitle();
-                var title, o = this.options;
                 if (typeof o.title == 'string') {
                     title = $e.attr(o.title == 'title' ? 'original-title' : o.title);
                 } else if (typeof o.title == 'function') {
                     title = o.title.call($e[0]);
                 }
+                title = ('' + title).replace(/(^\s*|\s*$)/, "");
             }
-            title = ('' + title).replace(/(^\s*|\s*$)/, "");
-
             return title || o.fallback;
         },
 
@@ -224,7 +223,6 @@
         offset: 0,
         opacity: 1,
         title: 'title',
-        target: null,
         trigger: 'hover',
         interactive: false
     };
