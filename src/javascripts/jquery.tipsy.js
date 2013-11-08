@@ -105,7 +105,7 @@
                 o.html = true;
                 o.interactive = true;
                 o.delayOut = 100;
-                title = $j(o.target).hide().html();
+                title = $(o.target).hide().html();
             }
             else
             {
