@@ -102,10 +102,7 @@
 
             if (o.target)
             {
-                o.html = true;
-                o.interactive = true;
-                o.delayOut = 100;
-                title = $(o.target).hide().html();
+                title = $j(o.target).hide().html();
             }
             else
             {
@@ -151,6 +148,13 @@
         }
 
         options = $.extend({}, $.fn.tipsy.defaults, options);
+
+        if (options.target)
+        {
+            options.html = true;
+            options.interactive = true;
+            options.delayOut = 100;
+        }
 
         function get(ele) {
             var tipsy = $.data(ele, 'tipsy');
