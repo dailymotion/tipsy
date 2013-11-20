@@ -29,6 +29,11 @@
             if (title && this.enabled) {
                 var $tip = this.tip();
 
+                if ($tip.is(':visible'))
+                {
+                    return true;
+                }
+
                 $tip.find('.tipsy-inner')[this.options.html ? 'html' : 'text'](title);
                 $tip[0].className = 'tipsy'; // reset classname in case of dynamic gravity
                 $tip.remove().css({top: 0, left: 0, visibility: 'hidden', display: 'block'}).prependTo(document.body);
@@ -81,6 +86,12 @@
         },
 
         hide: function() {
+
+            if (this.options.target)
+            {
+                $(this.options.target).html($('.tipsy-inner', this.tip()).html());
+            }
+
             if (this.options.fade) {
                 this.tip().stop().fadeOut(function() { $(this).remove(); });
             } else {
@@ -147,14 +158,14 @@
             return this;
         }
 
+        options = $.extend({}, $.fn.tipsy.defaults, options);
+
         if (options.target)
         {
             options.html = true;
             options.interactive = true;
             options.delayOut = 100;
         }
-
-        options = $.extend({}, $.fn.tipsy.defaults, options);
 
         function get(ele) {
             var tipsy = $.data(ele, 'tipsy');
@@ -292,11 +303,10 @@
     */
 
     $(function(){
-        $j('.js-tipsy').each(function()
+        $('.js-tipsy').each(function()
             {
-                var options = $j(this).data('tipsy-options') || {};
-                $j(this).tipsy(options);
+                var options = $(this).data('tipsy-options') || {};
+                $(this).tipsy(options);
             });
     });
 })(jQuery);
-
