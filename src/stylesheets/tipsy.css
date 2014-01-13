@@ -7,12 +7,38 @@
 
 .tipsy-inner
 {
+    padding: 5px 10px 4px 10px;
+    background-color: #333;
+    letter-spacing: 0.4px;
+    color: #ededed;
+    border-radius: 3px; -moz-border-radius:3px; -webkit-border-radius:3px;
+    border: 1px solid #ebebeb;
+    font-size: 12px;
+    box-shadow: none;
+}
+
+
+.tipsy.tipsy-button-dropdown .tipsy-inner, .tipsy-infotip .tipsy-inner
+{
+    letter-spacing: 0px;
     padding: 10px;
-    background-color: #000;
+    background-color: #fff;
     color: #333;
     border-radius: 3px; -moz-border-radius:3px; -webkit-border-radius:3px;
     border: 1px solid #ebebeb;
     box-shadow: 0px 0px 3px #ddd;
+}
+
+.tipsy-infotip .tipsy-inner
+{
+    padding:10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 4px #afafaf;
+}
+
+.tipsy-infotip .tipsy-inner p
+{
+    color:#5e5b5b;
 }
 
 .tipsy-arrow,
@@ -29,7 +55,21 @@
     border-width: 6px;
 }
 
+.tipsy-infotip .tipsy-arrow,
+.tipsy-infotip .tipsy-arrow-bg
+{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 9px solid transparent;
+}
 
+.tipsy-infotip .tipsy-arrow-bg
+{
+    border-width:10px;
+}
+
+/* North */
 
 .tipsy-n .tipsy-arrow
 {
@@ -37,17 +77,47 @@
     top: -4px; left: 50%; margin-left: -4px;
 }
 
+.tipsy-infotip.tipsy-n .tipsy-arrow
+{
+   top: -12px; left: 50%; margin-left: -4px;
+}
+
+.tipsy-infotip.tipsy-n .tipsy-arrow-bg
+{
+    top: -14px;
+    margin-left:-5px;
+    border-bottom-color: #ccc;
+}
+
+
+.tipsy-ballon.tipsy-n .tipsy-arrow
+{
+    border-bottom-color: #333;
+}
+
+
 .tipsy-n .tipsy-arrow-bg
 {
     border-bottom-color: #ebebeb;
     top: -6px; left: 50%; margin-left: -5px;
 }
 
+.tipsy-ballon.tipsy-n .tipsy-arrow-bg
+{
+    border-bottom-color: #333;
+}
 
+
+/* North-West */
 .tipsy-nw .tipsy-arrow
 {
     border-bottom-color: #fff;
     top: -4px; left: 11px;
+}
+
+.tipsy-ballon.tipsy-nw .tipsy-arrow
+{
+    border-bottom-color: #333;
 }
 
 .tipsy-nw .tipsy-arrow-bg
@@ -56,11 +126,27 @@
     top: -6px; left: 10px;
 }
 
+.tipsy-ballon.tipsy-nw .tipsy-arrow-bg
+{
+    border-bottom-color: #333;
+}
+
+.tipsy-infotip.tipsy-nw .tipsy-arrow-bg
+{
+    border-bottom-color: #ccc;
+}
+
+/* North-East */
+
 
 .tipsy-ne .tipsy-arrow
 {
     border-bottom-color: #fff;
     top: -4px; right: 11px;
+}
+.tipsy-ballon.tipsy-ne .tipsy-arrow
+{
+    border-bottom-color: #333;
 }
 
 .tipsy-ne .tipsy-arrow-bg
@@ -69,11 +155,27 @@
     top: -6px; right: 10px;
 }
 
+.tipsy-ballon.tipsy-ne .tipsy-arrow-bg
+{
+    border-bottom-color: #333;
+}
+
+.tipsy-infotip.tipsy-ne .tipsy-arrow-bg
+{
+    border-bottom-color: #ccc;
+}
+
+/* South */
 
 .tipsy-s .tipsy-arrow
 {
     border-top-color: #fff;
     bottom: -4px; left: 50%; margin-left: -4px;
+}
+
+.tipsy-ballon.tipsy-s .tipsy-arrow
+{
+    border-top-color: #333;
 }
 
 .tipsy-s .tipsy-arrow-bg
@@ -82,6 +184,26 @@
     bottom: -6px; left: 50%; margin-left: -5px;
 }
 
+.tipsy-ballon.tipsy-s .tipsy-arrow-bg
+{
+  border-top-color: #333;
+}
+
+
+.tipsy-infotip.tipsy-s .tipsy-arrow
+{
+   bottom: -12px; left: 50%; margin-left: -4px;
+}
+
+.tipsy-infotip.tipsy-s .tipsy-arrow-bg
+{
+    bottom: -14px;
+    margin-left:-5px;
+    border-top-color: #ccc;
+}
+
+
+/* South-West */
 
 .tipsy-sw .tipsy-arrow
 {
@@ -89,12 +211,28 @@
     bottom: -4px; left: 11px;
 }
 
+.tipsy-ballon.tipsy-sw .tipsy-arrow
+{
+    border-top-color: #333;
+}
+
 .tipsy-sw .tipsy-arrow-bg
 {
-    border-top-color: #ebebeb;
+    border-top-color: #333;
     bottom: -6px; left: 10px;
 }
 
+.tipsy-ballon.tipsy-sw .tipsy-arrow-bg
+{
+    border-top-color: #333;
+}
+
+.tipsy-infotip.tipsy-sw .tipsy-arrow-bg
+{
+    border-top-color: #ccc;
+}
+
+/* South-East */
 
 .tipsy-se .tipsy-arrow
 {
@@ -102,17 +240,38 @@
     bottom: -4px; right: 11px;
 }
 
+.tipsy-ballon.tipsy-se .tipsy-arrow
+{
+    border-top-color: #333;
+}
+
 .tipsy-se .tipsy-arrow-bg
 {
-    border-top-color: #ebebeb;
+    border-top-color: #333;
     bottom: -6px; right: 10px;
 }
 
+.tipsy-ballon.tipsy-se .tipsy-arrow-bg
+{
+    border-top-color: #333;
+}
+
+.tipsy-infotip.tipsy-se .tipsy-arrow-bg
+{
+    border-top-color: #ccc;
+}
+
+/* East */
 
 .tipsy-e .tipsy-arrow
 {
     border-left-color: #fff;
     top: 50%; margin-top: -4px; right: -4px;
+}
+
+.tipsy-ballon.tipsy-e .tipsy-arrow
+{
+    border-left-color: #333;
 }
 
 .tipsy-e .tipsy-arrow-bg
@@ -121,6 +280,27 @@
     top: 50%; margin-top: -5px; right: -6px;
 }
 
+.tipsy-ballon.tipsy-e .tipsy-arrow-bg
+{
+    border-left-color: #333;
+}
+
+.tipsy-infotip.tipsy-e .tipsy-arrow
+{
+    top: 50%;
+    margin-top: -7px;
+    right: -12px;
+}
+
+.tipsy-infotip.tipsy-e .tipsy-arrow-bg
+{
+    top: 50%;
+    margin-top: -8px;
+    right: -14px;
+    border-left-color: #ccc;
+}
+
+/* West */
 
 .tipsy-w .tipsy-arrow
 {
@@ -128,8 +308,40 @@
     top: 50%; margin-top: -4px; left: -4px;
 }
 
+.tipsy-ballon.tipsy-w .tipsy-arrow
+{
+    border-right-color: #333;
+}
+
 .tipsy-w .tipsy-arrow-bg
 {
     border-right-color: #ebebeb;
     top: 50%; margin-top: -5px; left: -6px;
+}
+
+.tipsy-ballon.tipsy-w .tipsy-arrow-bg
+{
+    border-right-color: #333;
+}
+
+.tipsy-infotip.tipsy-w .tipsy-arrow
+{
+    top: 50%;
+    margin-top: -7px;
+    left: -12px;
+}
+
+.tipsy-infotip.tipsy-w .tipsy-arrow-bg
+{
+    top: 50%;
+    margin-top: -8px;
+    left: -14px;
+    border-right-color: #ccc;
+}
+
+/* DAILY-13883 */
+#erroraccounting
+{
+    width: 1px;
+    display: block;
 }

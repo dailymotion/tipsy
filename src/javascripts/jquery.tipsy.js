@@ -10,15 +10,19 @@
     };
 
     function isElementInDOM(ele) {
-      while (ele = ele.parentNode) {
-        if (ele == document) return true;
-      }
-      return false;
+        while (ele = ele.parentNode) {
+            if (ele == document) return true;
+        }
+        return false;
     };
 
     function Tipsy(element, options) {
         this.$element = $(element);
         this.options = options;
+        if (this.options.tooltip_type == 'tipsy-infotip')
+        {
+            this.options.offset = 3;
+        }
         this.enabled = true;
         this.fixTitle();
     };
@@ -36,6 +40,12 @@
 
                 $tip.find('.tipsy-inner')[this.options.html ? 'html' : 'text'](title);
                 $tip[0].className = 'tipsy'; // reset classname in case of dynamic gravity
+                console.log(this.options);
+                if (this.options.tooltip_type)
+                {
+
+                    $tip.addClass(this.options.tooltip_type);
+                }
                 $tip.remove().css({top: 0, left: 0, visibility: 'hidden', display: 'block'}).prependTo(document.body);
 
                 var pos = $.extend({}, this.$element.offset(), {
@@ -109,7 +119,6 @@
         getTitle: function() {
             var title, $e = this.$element, o = this.options;
             this.fixTitle();
-            var title, o = this.options;
 
             if (o.target)
             {
@@ -179,7 +188,7 @@
         function enter() {
             var tipsy = get(this);
             tipsy.hoverState = 'in';
-            if (options.delayIn == 0) {
+            if (options.delayIn === 0) {
                 tipsy.show();
             } else {
                 tipsy.fixTitle();
@@ -190,24 +199,24 @@
         function leave() {
             var tipsy = get(this);
             tipsy.hoverState = 'out';
-            if (options.delayOut == 0) {
+            if (options.delayOut === 0) {
                 tipsy.hide();
             } else {
                 // setTimeout(function() { if (tipsy.hoverState == 'out') tipsy.hide(); }, options.delayOut);
                 var hideTimer = setTimeout(function() { if (tipsy.hoverState == 'out') tipsy.hide(); }, options.delayOut);
                 if(options.interactive) {
-                    var $tip = tipsy.tip()
+                    var $tip = tipsy.tip();
                     $tip.hover(
                   function(){
-                      clearTimeout(hideTimer)
-                  },
+                        clearTimeout(hideTimer);
+                    },
                   function(){
-                      hideTimer = setTimeout(function() {
-                    if (tipsy.hoverState == 'out') {
-                        tipsy.hide()
+                        hideTimer = setTimeout(function() {
+                            if (tipsy.hoverState == 'out') {
+                                tipsy.hide();
+                            }
+                        }, options.delayOut);
                     }
-                      }, options.delayOut)
-                  }
                     );
                 }
             }
@@ -243,12 +252,12 @@
     };
 
     $.fn.tipsy.revalidate = function() {
-      $('.tipsy').each(function() {
-        var pointee = $.data(this, 'tipsy-pointee');
-        if (!pointee || !isElementInDOM(pointee)) {
-          $(this).remove();
-        }
-      });
+        $('.tipsy').each(function() {
+            var pointee = $.data(this, 'tipsy-pointee');
+            if (!pointee || !isElementInDOM(pointee)) {
+                $(this).remove();
+            }
+        });
     };
 
     // Overwrite this method to provide options on a per-element basis.
@@ -282,7 +291,7 @@
      *        that element's tooltip to be 'se', preserving the southern
      *        component.
      */
-     $.fn.tipsy.autoBounds = function(margin, prefer) {
+    $.fn.tipsy.autoBounds = function(margin, prefer) {
         return function() {
             var dir = {ns: prefer[0], ew: (prefer.length > 1 ? prefer[1] : false)},
                 boundTop = $(document).scrollTop() + margin,
@@ -295,7 +304,7 @@
             if ($(window).height() + $(document).scrollTop() - $this.offset().top < margin) dir.ns = 's';
 
             return dir.ns + (dir.ew ? dir.ew : '');
-        }
+        };
     };
 
     /**
@@ -310,3 +319,4 @@
             });
     });
 })(jQuery);
+
