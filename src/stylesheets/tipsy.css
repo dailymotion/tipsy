@@ -18,6 +18,11 @@
 }
 
 
+.tipsy-ballon .tipsy-inner
+{
+    border: none;
+}
+
 .tipsy.tipsy-button-dropdown .tipsy-inner, .tipsy-infotip .tipsy-inner
 {
     letter-spacing: 0px;

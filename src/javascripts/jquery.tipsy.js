@@ -313,6 +313,10 @@
         $('.js-tipsy').each(function()
             {
                 var options = $(this).data('tipsy-options') || {};
+                if ($(this).hasClass('js-tipsy-ballon'))
+                {
+                    options.tooltip_type = 'tipsy-ballon';
+                }
                 $(this).tipsy(options);
             });
     });
