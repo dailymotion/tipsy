@@ -40,10 +40,8 @@
 
                 $tip.find('.tipsy-inner')[this.options.html ? 'html' : 'text'](title);
                 $tip[0].className = 'tipsy'; // reset classname in case of dynamic gravity
-                console.log(this.options);
                 if (this.options.tooltip_type)
                 {
-
                     $tip.addClass(this.options.tooltip_type);
                 }
                 $tip.remove().css({top: 0, left: 0, visibility: 'hidden', display: 'block'}).prependTo(document.body);
