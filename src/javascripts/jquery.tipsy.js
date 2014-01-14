@@ -50,7 +50,6 @@
                 $tip[0].className = 'tipsy'; // reset classname in case of dynamic gravity
                 if (this.options.tooltip_type)
                 {
-                    console.log(this.options.tooltip_type + '<<<< TIP TYPE');
                     $tip.addClass(this.options.tooltip_type);
                 }
                 $tip.remove().css({top: 0, left: 0, visibility: 'hidden', display: 'block'}).prependTo(document.body);
@@ -321,7 +320,6 @@
     $(function(){
         $('.js-tipsy').each(function()
             {
-                console.log($(this));
                 var options = $(this).data('tipsy-options') || {};
                 $(this).tipsy(options);
             });
