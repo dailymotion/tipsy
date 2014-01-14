@@ -19,20 +19,17 @@
     function Tipsy(element, options) {
         this.$element = $(element);
         this.options = options;
-        if (this.$element.hasClass('js-tipsy-infotip'))
+        if (this.$element.hasClass('js-tipsy-ballon') || this.$element.hasClass('js-tipsy-infotip'))
         {
-            this.options.tooltip_type = 'tipsy-infotip';
+            this.options.delayOut = 50;
+            this.options.interactive = true;
+            this.options.tooltip_type = (this.$element.hasClass('js-tipsy-ballon') ? 'tipsy-ballon' : 'tipsy-infotip');
+            this.options.gravity = 's'; /* AutoGravity South for ballon & infotip */
+            this.options.html = true;
         }
         if (this.options.tooltip_type == 'tipsy-infotip')
         {
             this.options.offset = 3;
-        }
-        if (this.$element.hasClass('js-tipsy-ballon'))
-        {
-            this.options.delayOut = 50;
-            this.options.interactive = true;
-            this.options.tooltip_type = 'tipsy-ballon';
-            this.options.gravity = 's'; /* AutoGravity South for ballon */
         }
         this.enabled = true;
         this.fixTitle();
