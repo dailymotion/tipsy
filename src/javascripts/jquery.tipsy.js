@@ -29,7 +29,10 @@
         }
         if (this.$element.hasClass('js-tipsy-ballon'))
         {
+            this.options.delayOut = 50;
+            this.options.interactive = true;
             this.options.tooltip_type = 'tipsy-ballon';
+            this.options.gravity = 's'; /* AutoGravity South for ballon */
         }
         this.enabled = true;
         this.fixTitle();
