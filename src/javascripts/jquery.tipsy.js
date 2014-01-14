@@ -19,9 +19,17 @@
     function Tipsy(element, options) {
         this.$element = $(element);
         this.options = options;
+        if (this.$element.hasClass('js-tipsy-infotip'))
+        {
+            this.options.tooltip_type = 'tipsy-infotip';
+        }
         if (this.options.tooltip_type == 'tipsy-infotip')
         {
             this.options.offset = 3;
+        }
+        if (this.$element.hasClass('js-tipsy-ballon'))
+        {
+            this.options.tooltip_type = 'tipsy-ballon';
         }
         this.enabled = true;
         this.fixTitle();
@@ -42,6 +50,7 @@
                 $tip[0].className = 'tipsy'; // reset classname in case of dynamic gravity
                 if (this.options.tooltip_type)
                 {
+                    console.log(this.options.tooltip_type + '<<<< TIP TYPE');
                     $tip.addClass(this.options.tooltip_type);
                 }
                 $tip.remove().css({top: 0, left: 0, visibility: 'hidden', display: 'block'}).prependTo(document.body);
@@ -312,13 +321,9 @@
     $(function(){
         $('.js-tipsy').each(function()
             {
+                console.log($(this));
                 var options = $(this).data('tipsy-options') || {};
-                if ($(this).hasClass('js-tipsy-ballon'))
-                {
-                    options.tooltip_type = 'tipsy-ballon';
-                }
                 $(this).tipsy(options);
             });
     });
 })(jQuery);
-
